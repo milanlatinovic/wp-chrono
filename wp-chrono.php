@@ -2,8 +2,8 @@
 /*
 Plugin Name: WP Chrono
 Plugin URI: https://github.com/milanlatinovic/wp-chrono
-Description: WordPress Chronosphere (WP Chrono) provides Custom Shortcodes for Time and Date manipulation(s) with WordPress content. This plugin is WPML and WooCommerce compatible.
-Version: 1.0.0
+Description: Easy Time and Date manipulation(s) with your content. This plugin is WPML and WooCommerce compatible.
+Version: 1.1
 Author: Milan Latinović
 Author URI: http://www.milanlatinovic.com
 */
@@ -92,7 +92,7 @@ function wpch_ifdate($atts, $content) {
    		$contents[1] = null;
 	}
 
-	if($displaydate_atts['date'] == date('Y/m/d')){
+	if($displaydate_atts['date'] == date('Y-m-d G:i:s')){
 		return do_shortcode($contents[0]);
 	}
 	else {
@@ -116,7 +116,7 @@ function wpch_ifdaterange($atts, $content) {
    		$contents[1] = null;
 	}
 
-	if (wpch_check_in_range($displaydate_atts['fromdate'], $displaydate_atts['todate'], date('Y/m/d'))){
+	if (wpch_check_in_range($displaydate_atts['fromdate'], $displaydate_atts['todate'], date('Y-m-d G:i:s'))){
 		return do_shortcode($contents[0]);
 	}
 	else {
@@ -128,10 +128,10 @@ function wpch_ifdaterange($atts, $content) {
 // Function to check if date is in specific range
 function wpch_check_in_range($start_date, $end_date, $date_from_user)
 {
-  // Convert to timestamp
-  $start_ts = strtotime($start_date);
-  $end_ts = strtotime($end_date);
-  $user_ts = strtotime($date_from_user);
+  // Convert to timestamp (date and time)
+  $start_ts = date('Y-m-d G:i:s', strtotime($start_date));
+  $end_ts = date('Y-m-d G:i:s', strtotime($end_date));
+  $user_ts = date('Y-m-d G:i:s', strtotime($date_from_user));
 
   // Check that user date is between start & end
   return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));

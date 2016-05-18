@@ -21,27 +21,28 @@ This plugin is WPML and WooCommerce compatible.
 Currently supported shortcodes:
 
 [wpch-currentdate] - show current date & time
+
 [wpch-ifdate] - show content on specific date
+
 [wpch-ifdaterange] - show content on specific date range
 
-This plugin is WooCommerce friendly, so you can use WooCommerce shortcodes inside IF - ELSE shortcodes and vice versa. Same compatibility applies to Events oriented plugins.
-<h2>1.1 - Inserting current date and time</h2>
-If we want to insert current date and time, we use these shortcodes:
-<ul>
-	<li>[ wpch-currentdate] - [wpch-currentdate]</li>
-	<li>[ wpch-currentdate format="F j, Y g:i a" ] - [wpch-currentdate format="F j, Y g:i a"]</li>
-	<li>[ wpch-currentdate format="F j, Y" ] - [wpch-currentdate format="F j, Y"]</li>
-	<li>[ wpch-currentdate format="F, Y" ] - [wpch-currentdate format="F, Y"]</li>
-	<li>[ wpch-currentdate format="g:i a" ] - [wpch-currentdate format="g:i a"]</li>
-	<li>[ wpch-currentdate format="g:i:s a" ] - [wpch-currentdate format="g:i:s a"]</li>
-	<li>[ wpch-currentdate format="M j, Y @ G:i" ] - [wpch-currentdate format="M j, Y @ G:i"]</li>
-	<li>[ wpch-currentdate format="Y/m/d \a\t g:i A" ] - [wpch-currentdate format="Y/m/d \a\t g:i A"]</li>
-	<li>[ wpch-currentdate format="Y/m/d \a\t g:ia" ] - [wpch-currentdate format="Y/m/d \a\t g:ia"]</li>
-	<li>[ wpch-currentdate format="Y/m/d g:i:s A" ] - [wpch-currentdate format="Y/m/d g:i:s A"]</li>
-	<li>[ wpch-currentdate format="Y/m/d" ] - [wpch-currentdate format="Y/m/d"]</li>
-	<li>[ wpch-currentdate format="g:i:s A" ] - [wpch-currentdate format="g:i:s A"]</li>
-	<li>[ wpch-currentdate format="g:i:s P" ] - [wpch-currentdate format="g:i:s P"]</li>
-</ul>
+
+<h2>1.1 - Current date and time</h2>
+
+[wpch-currentdate] - May 18th, 2016
+[wpch-currentdate format="F j, Y g:i a"] - May 18, 2016 9:44 pm
+[wpch-currentdate format="F j, Y"] - May 18, 2016
+[wpch-currentdate format="F, Y"] - May, 2016 
+[wpch-currentdate format="g:i a"] - 9:44 pm
+[wpch-currentdate format="g:i:s a"] - 9:44:38 pm
+[wpch-currentdate format="M j, Y @ G:i"] - May 18, 2016 @ 9:44
+[wpch-currentdate format="Y/m/d \a\t g:i A"] - 2016/05/18 9:44 PM
+[wpch-currentdate format="Y/m/d \a\t g:ia"] - 2016/05/18 9:44pm
+[wpch-currentdate format="Y/m/d g:i:s A"] - 2016/05/18 9:44:38 PM
+[wpch-currentdate format="Y/m/d"] - 2016/05/18
+[wpch-currentdate format="g:i:s A"] - 9:44:38 PM
+[wpch-currentdate format="g:i:s P"] - 9:44:38 +03:00
+
 <h2>1.2 - Show customized content on specific date</h2>
 For example, we want to create logic that will print some content specifically on 7th April, year 2016. We will use wpch-ifdate shortcode with date attribute. Format of date attribute <strong>must be</strong> yyyy/mm/dd, so our date entry will be "2016/04/07", and short code will look like this.
 <pre>[ wpch-ifdate date="2016/04/07" ]This is content that will be printed only on 7th April, year 2016. This content supports all WP editor native functions, so what you see if what you get. [ else ]This is part of the content that will be printed if day is not 7th April, so before or after it! :)[ /wpch-ifdate ]</pre>
@@ -126,6 +127,10 @@ create a construction like this one:
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1 =
+* Added Time support to [wpch-ifdate] and [wpch-daterange] shortcodes
+* Added "Y-m-d G:i:s" format support to [wpch-ifdate] and [wpch-daterange] shortcodes
 
 = 1.0 =
 * Initial version of WordPress Chronosphere plugin
