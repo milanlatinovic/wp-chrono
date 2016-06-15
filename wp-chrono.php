@@ -3,9 +3,26 @@
 Plugin Name: WP Chrono
 Plugin URI: https://github.com/milanlatinovic/wp-chrono
 Description: Easy Time and Date manipulation(s) with your content. This plugin is WPML and WooCommerce compatible.
-Version: 1.1
+Version: 1.1.1
 Author: Milan Latinović
 Author URI: http://www.milanlatinovic.com
+*/
+
+/*
+Copyright (C) 2016 Milan Latinović, milanlatinovic.com (milan.latinovic AT live DOT com)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /* TABLE OF CONTENTS */
