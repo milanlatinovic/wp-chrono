@@ -60,6 +60,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Registers all our custom shortcodes on init
 add_action('init', 'wpch_register_shortcodes');
 
+// 1.2
+// Registers all scripts used in plugin
+add_action( 'wp_enqueue_scripts', 'wpch_register_scripts' );
+
+// 1.3.
+// Registers all styles used in plugin
+add_action( 'wp_enqueue_scripts', 'wpch_register_styles' );
+
 /* 2. SHORTCODES */
 
 // 2.1
@@ -75,8 +83,22 @@ function wpch_register_shortcodes() {
 	// Create a shortcode to display of content on current date range
 	add_shortcode('wpch-ifdaterange', 'wpch_ifdaterange');
 
+	// Create a shortcode to display countdown timer for user selected date
+	add_shortcode('wpch-countdowntimer', 'wpch_countdowntimer');
+
 }
 
+// 2.2
+// Registers all scripts used in plugin
+function wpch_register_scripts() {
+	wp_enqueue_script( 'coutdowntimer_script', plugins_url( '/js/countdowntimer.js', __FILE__ ) );
+}
+
+// 2.3
+// Registers all styles used in plugin
+function wpch_register_styles() {
+	 wp_enqueue_style( 'coutdowntimer_style', plugins_url( '/css/countdowntimer.css', __FILE__ ), array(), '20160617', 'all' );
+}
 
 /* 3. FILTERS */
 
@@ -153,6 +175,63 @@ function wpch_check_in_range($start_date, $end_date, $date_from_user)
   // Check that user date is between start & end
   return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
 }
+
+
+// 5.5
+// Function to display countdowntimer for user defined timeframe 
+function wpch_countdowntimer($atts, $content) {
+	$output = '';
+	$display_atts = shortcode_atts(
+		array(
+			'name' => '',
+			'date' => '', 
+			'template' => '',
+		), $atts
+	);
+
+	// Convert template attribute intro appropriate CSS class
+	switch($display_atts['template']) {
+		case "darkblue": $display_atts['template'] = "wpch_darkblue"; break;
+		case "blue": $display_atts['template'] = "wpch_blue"; break;
+		case "darkpurple": $display_atts['template'] = "wpch_darkpurple"; break;
+		case "purple": $display_atts['template'] = "wpch_purple"; break;
+		case "green": $display_atts['template'] = "wpch_green"; break;
+		case "lightgreen": $display_atts['template'] = "wpch_lightgreen"; break;
+		case "red": $display_atts['template'] = "wpch_red"; break;
+		case "yellow": $display_atts['template'] = "wpch_yellow"; break;
+		default: $display_atts['template'] = "wpch_default"; break;
+	}
+
+
+
+	$output = '<div id="wpch_clockdiv_'.$display_atts['name'].'" class="'. $display_atts['template'] .'"> ' .$counterdate . '
+				   <div>
+				      <span class="wpch_days"></span>
+				      <div class="wpch_smalltext">Days</div>
+				    </div>
+				    <div>
+				      <span class="wpch_hours"></span>
+				      <div class="wpch_smalltext">Hours</div>
+				    </div>
+				    <div>
+				      <span class="wpch_minutes"></span>
+				      <div class="wpch_smalltext">Minutes</div>
+				    </div>
+				    <div>
+				      <span class="wpch_seconds"></span>
+				      <div class="wpch_smalltext">Seconds</div>
+				    </div>
+				</div>
+				<div id="wpch_clockdivcontent_'.$display_atts['name'].'">' . $content . '</div>
+				<script>
+					// initialize script
+					initializeClock(\'wpch_clockdiv_'.$display_atts['name'].'\', \'wpch_clockdivcontent_'.$display_atts['name'].'\', \'' . $display_atts['date'] .' \');
+
+				</script>';
+
+	return $output;
+}
+
 
 /* 6. HELPERS */
 		

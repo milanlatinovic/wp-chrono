@@ -1,0 +1,62 @@
+[id^=wpch_clockdiv_] {
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+[id^=wpch_clockdiv_] > div {
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+[id^=wpch_clockdiv_] div > span {
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.wpch_smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+/* ------------------------  TEMPLATING --------------------------- */
+
+/* -- DEFAULT */
+[id^=wpch_clockdiv_].wpch_default { color: black; }
+
+/* -- DARK BLUE -- */
+[id^=wpch_clockdiv_].wpch_darkblue > div { background: #5a7188; }
+[id^=wpch_clockdiv_].wpch_darkblue div > span { background: #17456c; }
+
+/* --  BLUE -- */
+[id^=wpch_clockdiv_].wpch_blue > div { background: #2d6399; }
+[id^=wpch_clockdiv_].wpch_blue div > span { background: #397dc0; }
+
+/* -- DARK PURPLE -- */
+[id^=wpch_clockdiv_].wpch_darkpurple > div { background: #8181c1; }
+[id^=wpch_clockdiv_].wpch_darkpurple div > span { background: #5656ad; } 
+
+/* -- PURPLE -- */
+[id^=wpch_clockdiv_].wpch_purple > div { background: #BD85D3; }
+[id^=wpch_clockdiv_].wpch_purple div > span { background: #9c59b6; } 
+
+/* -- RED -- */
+[id^=wpch_clockdiv_].wpch_red > div { background: #cb0000; }
+[id^=wpch_clockdiv_].wpch_red div > span { background: #ea4c4c; }
+
+/* -- GREEN -- */
+[id^=wpch_clockdiv_].wpch_green > div { background: #5c996b; }
+[id^=wpch_clockdiv_].wpch_green div > span { background: #7acc8f; }
+
+/* -- LIGHT GREEN -- */
+[id^=wpch_clockdiv_].wpch_lightgreen > div { background: #60ab73; }
+[id^=wpch_clockdiv_].wpch_lightgreen div > span { background: #a1d2a3; }
+
+/* -- YELLOW -- */
+[id^=wpch_clockdiv_].wpch_yellow > div { background: #c2c41a; }
+[id^=wpch_clockdiv_].wpch_yellow div > span { background: #e7e91e; }
