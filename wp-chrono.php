@@ -2,8 +2,8 @@
 /*
 Plugin Name: WP Chrono
 Plugin URI: https://github.com/milanlatinovic/wp-chrono
-Description: Easy Time and Date manipulation(s) with your content. This plugin is WPML and WooCommerce compatible.
-Version: 1.1.1
+Description: Easy Time and Date manipulation(s) with your content, using shortcodes.
+Version: 1.2
 Author: Milan Latinović
 Author URI: http://www.milanlatinovic.com
 */

@@ -17,14 +17,17 @@ This plugin is WPML and WooCommerce compatible.
 
 
 If you want to accomplish these things easy:
+
 * Show current time anywhere on your site
 * Show certain parts of your posts/pages on specific dates 
 * Show certain parts of your posts/pages on specific date ranges
 * Create IF-ELSE rules for displaying your content, related to specific dates
- 
- 
-This plugin pays special attention to multilanguage compatibility and e-commerce platforms compatibility.
-* WPML compatible (tested - Version 3.4)
+* Create lightweight countdown timer (plain JavaScript) with templating support
+
+
+This plugin pays special attention to multilanguage compatibility and e-commerce platforms compatibility:
+
+* WPML compatible (currently under testing and WPML approval)
 * WooCommerce Multilingual (tested - Version 3.8)
 * qTranslate compatible (tested - Version 3.4.6.8)
 * WooCommerce (tested - Version 2.6.0)
@@ -37,7 +40,7 @@ Currently supported shortcodes:
 * [wpch-ifdaterange] - show content on specific date range
 
 
-<h2>1.1 - Current date and time</h2>
+<h2>1.1 Current date and time</h2>
 Use this shortcode to preview current date anywhere in your content, and format it as you prefer. 
 
 * [wpch-currentdate] - May 18th, 2016
@@ -55,25 +58,25 @@ Use this shortcode to preview current date anywhere in your content, and format 
 * [wpch-currentdate format="g:i:s P"] - 9:44:38 +03:00
 
 
-<h2>1.2 - Show customized content on specific date</h2>
+<h2>1.2 Show customized content on specific date</h2>
 For example, create logic that will print some content specifically on 7th April, year 2016. 
-We will use wpch-ifdate shortcode with date attribute. Format of date attribute **must be** yyyy/mm/dd, 
+We will use wpch-ifdate shortcode with date attribute. Format of date attribute **must be** yyyy/mm/dd, 
 so our date entry will be "2016/04/07", and short code will look like this.
 
 <pre>[wpch-ifdate date="2016/04/07"]This is content that will be printed only on 7th April, year 2016. 
 This content supports all WP editor native functions, so what you see if what you get. [else]This is 
 part of the content that will be printed if day is not 7th April, so before or after it! :)[/wpch-ifdate]</pre>
 
-<h2>1.3 - Date ranges</h2>
+<h2>1.3 Date ranges</h2>
 Example shortcode use for **date ranges between 1st April and 10th April of 2016.**
 
 <pre>[wpch-ifdaterange fromdate="2016/04/01" todate="2016/04/10" ]This is content that will be printed only for 
-range 1st to 10th April, year 2016. This content supports all WP editor native functions, so what you see 
+range 1st to 10th April, year 2016. This content supports all WP editor native functions, so what you see 
 if what you get.[else]This is part of the content that will be printed if day is not within a 
 given range.[/wpch-ifdaterange]</pre>
 
 
-Example shortcode use for **date ranges between 1st March and 10th March of 2016.**
+Example shortcode use for **date ranges between 1st March and 10th March of 2016.**
 
 <pre>
 [wpch-ifdaterange fromdate="2016/03/01" todate="2017/05/17"]
@@ -89,6 +92,18 @@ Example shortcode use for **date ranges between 1st March and 10th March of 2016
 [/wpch-ifdaterange]
 </pre>
 
+<h2>1.4 Lightweight Countdown Timer</h2>
+Use one of predefined templates to quickly create light weight CountDown timer,
+using this shortcode:
+
+<pre>
+[wpch-countdowntimer name="first" date="2016-08-24 11:23 PM" template="darkblue"]
+This is content that will be previewed after counter finished countdown.
+Note: This content in CSS hidden, so it's visible inside code at client side.
+[/wpch-countdowntimer]
+</pre>
+
+Templates: darkblue, blue, darkpurple, purple, green, red, yellow
 
 == Installation ==
 
@@ -124,18 +139,26 @@ create a construction like this one:
 
 == Changelog ==
 
+= 1.2 =
+* Feature: Added new shortcode [wpch-countdowntimer] for light weight Count Down Timer
+* Feature: Added different templates for Count Down Timer
+* Documentation: Additional improvements to plugin documentation
+
 = 1.1.1 =
-* Tested for WordPress 4.5.2
-* Description improved and code additionaly commented
+* Compatibility: Tested for WordPress 4.5.2
+* Documentation: Description improved and code additionaly commented
 
 = 1.1 =
-* Added Time support to [wpch-ifdate] and [wpch-daterange] shortcodes
-* Added "Y-m-d G:i:s" format support to [wpch-ifdate] and [wpch-daterange] shortcodes
+* Feature: Added Time support to [wpch-ifdate] and [wpch-daterange] shortcodes
+* Feature: Added "Y-m-d G:i:s" format support to [wpch-ifdate] and [wpch-daterange] shortcodes
 
 = 1.0 =
-* Initial version of WordPress Chronosphere plugin
+* Major: Initial version of WordPress Chronosphere plugin
 
 == Upgrade Notice ==
+
+= 1.2 =
+Have idea for a new feature of this plugin? Leave us <a href="https://wordpress.org/support/plugin/wp-chrono"  target="_blank">request for feature</a> and <a href="https://wordpress.org/support/view/plugin-reviews/wp-chrono"  target="_blank">give us a great review.</a> All best! :)
 
 = 1.0 =
 This is lightweight plugin which provides great shortcode functionalities, there is no reason not to have it in your stack. :)
