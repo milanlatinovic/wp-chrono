@@ -6,6 +6,7 @@ Description: Easy Time and Date manipulation(s) with your content, using shortco
 Version: 1.2
 Author: Milan Latinović
 Author URI: http://www.milanlatinovic.com
+Text Domain: wp-chrono
 */
 
 /*
@@ -28,28 +29,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* TABLE OF CONTENTS */
 
 /*
-	
+
 	1. HOOKS
-	
+
 	2. SHORTCODES
 		2.1 - wpch_register_shortcodes()
-		
+
 	3. FILTERS
-		
+
 	4. EXTERNAL SCRIPTS
-		
+
 	5. ACTIONS
 		5.1. - wpch_currentdate($atts)
 		5.2. - wpch_ifdate($atts, $content)
 		5.3. - wpch_ifdaterange($atts, $content)
 		5.4. - wpch_check_in_range($start_date, $end_date, $date_from_user)
-	
+
 	6. HELPERS
-		
+
 	7. CUSTOM POST TYPES
-	
+
 	8. ADMIN PAGES
-	
+
 	9. SETTINGS
 
 */
@@ -73,7 +74,7 @@ add_action( 'wp_enqueue_scripts', 'wpch_register_styles' );
 // 2.1
 // Registers all our custom shortcodes
 function wpch_register_shortcodes() {
-	
+
 	// Create a shortcode to display of current date
 	add_shortcode('wpch-currentdate', 'wpch_currentdate');
 
@@ -121,7 +122,7 @@ function wpch_ifdate($atts, $content) {
 	$output = '';
    if (empty($atts)) return '';
 	$displaydate_atts = shortcode_atts( array('date' => ''), $atts);
-	
+
 	// Read Shortcode IF options
 	$contents = explode("[else]", $content);
 	if ( ! isset($contents[0])) {
@@ -145,7 +146,7 @@ function wpch_ifdaterange($atts, $content) {
 	$output = '';
    if (empty($atts)) return '';
 	$displaydate_atts = shortcode_atts( array('fromdate' => '', 'todate' => ''), $atts);
-	
+
 	// Read Shortcode IF options
 	$contents = explode("[else]", $content);
 	if ( ! isset($contents[0])) {
@@ -178,13 +179,13 @@ function wpch_check_in_range($start_date, $end_date, $date_from_user)
 
 
 // 5.5
-// Function to display countdowntimer for user defined timeframe 
+// Function to display countdowntimer for user defined timeframe
 function wpch_countdowntimer($atts, $content) {
 	$output = '';
 	$display_atts = shortcode_atts(
 		array(
 			'name' => '',
-			'date' => '', 
+			'date' => '',
 			'template' => '',
 		), $atts
 	);
@@ -207,19 +208,19 @@ function wpch_countdowntimer($atts, $content) {
 	$output = '<div id="wpch_clockdiv_'.$display_atts['name'].'" class="'. $display_atts['template'] .'"> ' .$counterdate . '
 				   <div>
 				      <span class="wpch_days"></span>
-				      <div class="wpch_smalltext">Days</div>
+				      <div class="wpch_smalltext">' .__( 'Days', 'wp-chrono' ) .'</div>
 				    </div>
 				    <div>
 				      <span class="wpch_hours"></span>
-				      <div class="wpch_smalltext">Hours</div>
+				      <div class="wpch_smalltext">' .__( 'Hours', 'wp-chrono' ) .'</div>
 				    </div>
 				    <div>
 				      <span class="wpch_minutes"></span>
-				      <div class="wpch_smalltext">Minutes</div>
+				      <div class="wpch_smalltext">' .__( 'Minutes', 'wp-chrono' ) .'</div>
 				    </div>
 				    <div>
 				      <span class="wpch_seconds"></span>
-				      <div class="wpch_smalltext">Seconds</div>
+				      <div class="wpch_smalltext">' .__( 'Seconds', 'wp-chrono' ) .'</div>
 				    </div>
 				</div>
 				<div id="wpch_clockdivcontent_'.$display_atts['name'].'">' . $content . '</div>
@@ -234,9 +235,9 @@ function wpch_countdowntimer($atts, $content) {
 
 
 /* 6. HELPERS */
-		
+
 /* 7. CUSTOM POST TYPES */
-	
+
 /* 8. ADMIN PAGES */
-	
+
 /* 9. SETTINGS */
