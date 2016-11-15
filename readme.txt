@@ -1,14 +1,14 @@
 === WP Chrono ===
-Contributors: 
+Contributors:
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan.softline%40gmail%2ecom&item_name=WP%20Chrono&item_number=Support%20WP%20Chrono%20Open%20Source&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
 Requires at least: 3.0.1
-Tested up to: 4.5.2
+Tested up to: 4.6.1
 Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress Chronosphere (WP Chrono) provides Custom Shortcodes for Time and Date manipulation(s) with WordPress content. 
+WordPress Chronosphere (WP Chrono) provides Custom Shortcodes for Time and Date manipulation(s) with WordPress content.
 This plugin is WPML and WooCommerce compatible.
 
 == Description ==
@@ -19,7 +19,7 @@ This plugin is WPML and WooCommerce compatible.
 If you want to accomplish these things easy:
 
 * Show current time anywhere on your site
-* Show certain parts of your posts/pages on specific dates 
+* Show certain parts of your posts/pages on specific dates
 * Show certain parts of your posts/pages on specific date ranges
 * Create IF-ELSE rules for displaying your content, related to specific dates
 * Create lightweight countdown timer (plain JavaScript) with templating support
@@ -41,12 +41,12 @@ Currently supported shortcodes:
 
 
 <h2>1.1 Current date and time</h2>
-Use this shortcode to preview current date anywhere in your content, and format it as you prefer. 
+Use this shortcode to preview current date anywhere in your content, and format it as you prefer.
 
 * [wpch-currentdate] - May 18th, 2016
 * [wpch-currentdate format="F j, Y g:i a"] - May 18, 2016 9:44 pm
 * [wpch-currentdate format="F j, Y"] - May 18, 2016
-* [wpch-currentdate format="F, Y"] - May, 2016 
+* [wpch-currentdate format="F, Y"] - May, 2016
 * [wpch-currentdate format="g:i a"] - 9:44 pm
 * [wpch-currentdate format="g:i:s a"] - 9:44:38 pm
 * [wpch-currentdate format="M j, Y @ G:i"] - May 18, 2016 @ 9:44
@@ -59,20 +59,20 @@ Use this shortcode to preview current date anywhere in your content, and format 
 
 
 <h2>1.2 Show customized content on specific date</h2>
-For example, create logic that will print some content specifically on 7th April, year 2016. 
-We will use wpch-ifdate shortcode with date attribute. Format of date attribute **must be** yyyy/mm/dd, 
+For example, create logic that will print some content specifically on 7th April, year 2016.
+We will use wpch-ifdate shortcode with date attribute. Format of date attribute **must be** yyyy/mm/dd,
 so our date entry will be "2016/04/07", and short code will look like this.
 
-<pre>[wpch-ifdate date="2016/04/07"]This is content that will be printed only on 7th April, year 2016. 
-This content supports all WP editor native functions, so what you see if what you get. [else]This is 
+<pre>[wpch-ifdate date="2016/04/07"]This is content that will be printed only on 7th April, year 2016.
+This content supports all WP editor native functions, so what you see if what you get. [else]This is
 part of the content that will be printed if day is not 7th April, so before or after it! :)[/wpch-ifdate]</pre>
 
 <h2>1.3 Date ranges</h2>
 Example shortcode use for **date ranges between 1st April and 10th April of 2016.**
 
-<pre>[wpch-ifdaterange fromdate="2016/04/01" todate="2016/04/10" ]This is content that will be printed only for 
-range 1st to 10th April, year 2016. This content supports all WP editor native functions, so what you see 
-if what you get.[else]This is part of the content that will be printed if day is not within a 
+<pre>[wpch-ifdaterange fromdate="2016/04/01" todate="2016/04/10" ]This is content that will be printed only for
+range 1st to 10th April, year 2016. This content supports all WP editor native functions, so what you see
+if what you get.[else]This is part of the content that will be printed if day is not within a
 given range.[/wpch-ifdaterange]</pre>
 
 
@@ -138,6 +138,10 @@ create a construction like this one:
 == Screenshots ==
 
 == Changelog ==
+
+= 1.3 =
+* Added full support to WPML (Big thanks to WPML Compatibility Team, especially to Vuk Vukovic, Amit Kvint and Mohamed Khafaja)
+* Compatibility: Tested for Wordpress 4.6.1
 
 = 1.2 =
 * Feature: Added new shortcode [wpch-countdowntimer] for light weight Count Down Timer
