@@ -205,7 +205,7 @@ function wpch_countdowntimer($atts, $content) {
 
 
 
-	$output = '<div id="wpch_clockdiv_'.$display_atts['name'].'" class="'. $display_atts['template'] .'"> ' .$counterdate . '
+	$output = '<div id="wpch_clockdiv_'.$display_atts['name'].'" class="'. $display_atts['template'] .'">
 				   <div>
 				      <span class="wpch_days"></span>
 				      <div class="wpch_smalltext">' .__( 'Days', 'wp-chrono' ) .'</div>
