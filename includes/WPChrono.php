@@ -10,7 +10,7 @@ class WPChrono {
 	public function __construct() {
 
 		$this->plugin_name = 'wp-chrono';
-		$this->version = '1.3';
+		$this->version = '1.4';
 
 		$this->current_date = strtotime(date('Y-m-d'));
 		$this->current_datetime = strtotime(date('Y-m-d G:i:s'));
