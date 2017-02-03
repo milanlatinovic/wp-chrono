@@ -119,14 +119,8 @@ class WPChrono {
 
 	public function checkDateInRange($start_date, $end_date, $current_datetime) {
 
-		var_dump($start_date);
-        var_dump($end_date);
-	    var_dump($current_datetime);
-
-	    echo(date_i18n('Y-m-d G:i:s', $current_datetime));
-
-	  // Check that user date is between start & end
 	  return (($current_datetime >= $start_date) && ($current_datetime <= $end_date));
+	  
 	}
 
 	public function countdownTimerShortcode($atts, $content) {
