@@ -4,11 +4,16 @@ class WPChrono {
 
 	protected $plugin_name;
 	protected $version;
+	protected $current_date;
+	protected $current_datetime;
 
 	public function __construct() {
 
 		$this->plugin_name = 'wp-chrono';
 		$this->version = '1.3';
+
+		$this->current_date = strtotime(date('Y-m-d'));
+		$this->current_datetime = strtotime(date('Y-m-d G:i:s'));
 
 		add_action( 'wp_enqueue_scripts', array($this, 'registerScripts') );
 		add_action( 'wp_enqueue_scripts', array($this, 'registerStyles') );
@@ -18,39 +23,52 @@ class WPChrono {
 	}
 
 	public function registerScripts() {
+
 		wp_enqueue_script( 'coutdowntimer_script', plugins_url( '../public/js/countdowntimer.js', __FILE__ ) );
+
 	}
 
 	public function registerStyles() {
+
 		 wp_enqueue_style( 'coutdowntimer_style', plugins_url( '../public/css/countdowntimer.css', __FILE__ ), array(), '20160617', 'all' );
+
 	}
 
 	public function registerShortcodes() {
 
 		// Create a shortcode to display of current date
 		add_shortcode('wpch-currentdate', array($this, 'currentDateShortcode'));
+
 		// Create a shortcode to display of content on current date
 		add_shortcode('wpch-ifdate', array($this,'ifDateShortcode'));
+
 		// Create a shortcode to display of content on current date range
 		add_shortcode('wpch-ifdaterange', array($this, 'ifDateRangeShortcode'));
+
 		// Create a shortcode to display countdown timer for user selected date
 		add_shortcode('wpch-countdowntimer', array($this, 'countdownTimerShortcode'));
 
 	}
 
 	public function currentDateShortcode($atts) {
+
 		$output = '';
 		$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);
-		$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);
-		$output .= date_i18n($displaydate_atts['format']);
+
+		$shortcode_format = $displaydate_atts['format'];
+		$output .= date_i18n($shortcode_format, $this->current_datetime);
+
 	    return do_shortcode($output);
 	}
 
 	public function ifDateShortcode($atts, $content) {
+
 		$output = '';
 	   	if (empty($atts)) return '';
 
 		$displaydate_atts = shortcode_atts( array('date' => ''), $atts);
+
+		$shortcode_date = strtotime($displaydate_atts['date']);
 
 		// Read Shortcode IF options
 		$contents = explode("[else]", $content);
@@ -63,11 +81,8 @@ class WPChrono {
 	   		$contents[1] = null;
 		}
 
-		// Compare date
-		$current_date = strtotime(date('Y-m-d')); //var_dump($current_date);
-		$shortcode_date = strtotime($displaydate_atts['date']); var_dump($shortcode_date);
 
-		if($current_date == $shortcode_date){
+		if($this->current_date == $shortcode_date){
 			return do_shortcode($contents[0]);
 		}
 		else {
@@ -76,9 +91,14 @@ class WPChrono {
 	}
 
 	public function ifDateRangeShortcode($atts, $content) {
+
 		$output = '';
-	   if (empty($atts)) return '';
+	   	if (empty($atts)) return '';
+
 		$displaydate_atts = shortcode_atts( array('fromdate' => '', 'todate' => ''), $atts);
+
+		$shortcode_fromdate = strtotime($displaydate_atts['fromdate']);
+		$shortcode_todate = strtotime($displaydate_atts['todate']);
 
 		// Read Shortcode IF options
 		$contents = explode("[else]", $content);
@@ -89,7 +109,7 @@ class WPChrono {
 	   		$contents[1] = null;
 		}
 
-		if ($this->checkDateInRange($displaydate_atts['fromdate'], $displaydate_atts['todate'], date('Y-m-d G:i:s'))){
+		if ($this->checkDateInRange($shortcode_fromdate, $shortcode_todate, $this->current_datetime)) {
 			return do_shortcode($contents[0]);
 		}
 		else {
@@ -97,14 +117,16 @@ class WPChrono {
 		}
 	}
 
-	public function checkDateInRange($start_date, $end_date, $date_from_user) {
-	  // Convert to timestamp (date and time)
-	  $start_ts = date('Y-m-d G:i:s', strtotime($start_date));
-	  $end_ts = date('Y-m-d G:i:s', strtotime($end_date));
-	  $user_ts = date('Y-m-d G:i:s', strtotime($date_from_user));
+	public function checkDateInRange($start_date, $end_date, $current_datetime) {
+
+		var_dump($start_date);
+        var_dump($end_date);
+	    var_dump($current_datetime);
+
+	    echo(date_i18n('Y-m-d G:i:s', $current_datetime));
 
 	  // Check that user date is between start & end
-	  return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+	  return (($current_datetime >= $start_date) && ($current_datetime <= $end_date));
 	}
 
 	public function countdownTimerShortcode($atts, $content) {
