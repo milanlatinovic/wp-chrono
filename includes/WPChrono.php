@@ -40,18 +40,22 @@ class WPChrono {
 
 	public function currentDateShortcode($atts) {
 		$output = '';
-		$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);
+		$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);
+		$displaydate_atts = shortcode_atts( array('format' => 'F jS, Y'), $atts);
 		$output .= date_i18n($displaydate_atts['format']);
 	    return do_shortcode($output);
 	}
 
 	public function ifDateShortcode($atts, $content) {
 		$output = '';
-	   if (empty($atts)) return '';
+	   	if (empty($atts)) return '';
+
 		$displaydate_atts = shortcode_atts( array('date' => ''), $atts);
 
 		// Read Shortcode IF options
 		$contents = explode("[else]", $content);
+
+		// Clean contents (if there is no ELSE assign NULL)
 		if ( ! isset($contents[0])) {
 	   		$contents[0] = null;
 		}
@@ -59,7 +63,11 @@ class WPChrono {
 	   		$contents[1] = null;
 		}
 
-		if($displaydate_atts['date'] == date('Y-m-d G:i:s')){
+		// Compare date
+		$current_date = strtotime(date('Y-m-d')); //var_dump($current_date);
+		$shortcode_date = strtotime($displaydate_atts['date']); var_dump($shortcode_date);
+
+		if($current_date == $shortcode_date){
 			return do_shortcode($contents[0]);
 		}
 		else {
