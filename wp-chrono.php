@@ -3,7 +3,7 @@
 Plugin Name: WP Chrono
 Plugin URI: https://projects.justlearnprogramming.com/wp-chrono
 Description: Easy Time and Date manipulation(s) with your content, using shortcodes.
-Version: 1.4
+Version: 1.5
 Author: Milan Latinović
 Author URI: http://www.milanlatinovic.com
 Text Domain: wp-chrono
