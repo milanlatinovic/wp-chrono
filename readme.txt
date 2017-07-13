@@ -3,8 +3,8 @@ Contributors: ljiljau
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan.softline%40gmail%2ecom&item_name=WP%20Chrono&item_number=Support%20WP%20Chrono%20Open%20Source&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
 Requires at least: 3.0.1
-Tested up to: 4.7.2
-Stable tag: 1.4
+Tested up to: 4.8
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,10 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.5 =
+* Compatibility: Tested for WordPress 4.8
+* Resolved: Bug with local formats (Thanks @toddedelman for reporting)
 
 = 1.4 =
 * Compatibility: Tested for WordPress 4.7.2
