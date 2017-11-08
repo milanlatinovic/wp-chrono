@@ -12,6 +12,10 @@ WP Chrono is plugin that uses simple shortcodes to help you show parts of your p
 
 == Description ==
 
+Do you need simple **CTM Content Time Management tool** ?
+Do you need to provide users with content (i.e. Coupon Codes) only on specific time and date ?
+Do you want to create Content Dripping on your web pages using nothing but shortcodes ?
+
 **WP Chrono** provides you with predefines shortcodes for accomplishing various tasks related to controling WordPress content.
 
 
@@ -121,6 +125,10 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.5.1 =
+* Compatibility: Tested for WordPress 4.8.3
+* Documentation: Additional improvements to plugin documentation
 
 = 1.5 =
 * Compatibility: Tested for WordPress 4.8
