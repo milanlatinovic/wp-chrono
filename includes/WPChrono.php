@@ -17,22 +17,24 @@ class WPChrono {
 
 		add_action( 'wp_enqueue_scripts', array($this, 'registerScripts') );
 		add_action( 'wp_enqueue_scripts', array($this, 'registerStyles') );
+		add_action('admin_init', array($this, 'registerAdminScripts'));
 
 		$this->registerShortcodes();
 		$this->registerAdminNotices();
 
+
 	}
 
 	public function registerScripts() {
-
 		wp_enqueue_script( 'coutdowntimer_script', plugins_url( '../public/js/countdowntimer.js', __FILE__ ) );
+	}
 
+	public function registerAdminScripts() {
+		wp_enqueue_script( 'my-notice-update', plugins_url( '../public/js/notice-update.js', __FILE__ ), array( 'jquery' ), '1.0', true  );
 	}
 
 	public function registerStyles() {
-
 		 wp_enqueue_style( 'coutdowntimer_style', plugins_url( '../public/css/countdowntimer.css', __FILE__ ), array(), '20160617', 'all' );
-
 	}
 
 	public function registerShortcodes() {
@@ -55,20 +57,22 @@ class WPChrono {
 
 		$user_id = get_current_user_id();
 
-		// Create admin notice for successfull plugin instalation
-		if( ! get_user_meta( $user_id, 'my_plugin_notice_dismissed' ) ) {
-		  add_action( 'admin_notices', array($this, 'successfullInstallNotice') );
+		
+		if( !function_exists( 'the_field' ) && empty( get_option( 'my-acf-notice-dismissed' ) ) ) {
+		  add_action( 'admin_notices', array($this, 'my_acf_admin_notice'));
 		}
-
-		add_action( 'admin_init', array($this, 'my_plugin_notice_dismissed'));
+		
+			add_action( 'wp_ajax_my_action', array($this, 'my_action_callback') );
 
 	}
 
-
-
-	public function successfullInstallNotice() {
+	public function my_action_callback() {
+		update_option( 'my-acf-notice-dismissed', 'true' );
+	}
+	
+	public function my_acf_admin_notice() {
 	    ?>
-	    <div class="notice notice-success is-dismissible my-successfull-install-notice">
+	    <div class="notice notice-success my-acf-notice is-dismissible">
 	        <p><?php 
 	        	_e( 'The latest version of WPChrono has been sucessfully installed! ', 'wp-chrono' );
 	        	_e( 'Need help with our plugin? Check our our <a href="https://wordpress.org/support/plugin/wp-chrono" target="_blank">support forums.</a>', 'wp-chrono' );
@@ -76,18 +80,9 @@ class WPChrono {
 	        <p><?php 
 	        	_e( 'Show us your love! <a href="https://wordpress.org/plugins/wp-chrono/#reviews" target="_blank">Leave a review.</a>	', 'wp-chrono' );  
 	        ?></p>
-	        <p><a href="?my-plugin-dismissed">Dismiss</a></p>
 	    </div>
 	    <?php
 	}
-
-	function my_plugin_notice_dismissed() {
-	    $user_id = get_current_user_id();
-	    if ( isset( $_GET['my-plugin-dismissed'] ) )
-	        add_user_meta( $user_id, 'my_plugin_notice_dismissed', 'true', true );
-	}
-	
-
 
 	public function currentDateShortcode($atts) {
 

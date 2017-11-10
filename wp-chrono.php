@@ -16,6 +16,8 @@ global $wpChronoMainObject;
 
 $wpChronoMainObject = new WpChrono();
 
+
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
