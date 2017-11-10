@@ -19,6 +19,7 @@ class WPChrono {
 		add_action( 'wp_enqueue_scripts', array($this, 'registerStyles') );
 
 		$this->registerShortcodes();
+		$this->registerAdminNotices();
 
 	}
 
@@ -49,6 +50,44 @@ class WPChrono {
 		add_shortcode('wpch-countdowntimer', array($this, 'countdownTimerShortcode'));
 
 	}
+
+	public function registerAdminNotices() {
+
+		$user_id = get_current_user_id();
+
+		// Create admin notice for successfull plugin instalation
+		if( ! get_user_meta( $user_id, 'my_plugin_notice_dismissed' ) ) {
+		  add_action( 'admin_notices', array($this, 'successfullInstallNotice') );
+		}
+
+		add_action( 'admin_init', array($this, 'my_plugin_notice_dismissed'));
+
+	}
+
+
+
+	public function successfullInstallNotice() {
+	    ?>
+	    <div class="notice notice-success is-dismissible my-successfull-install-notice">
+	        <p><?php 
+	        	_e( 'The latest version of WPChrono has been sucessfully installed! ', 'wp-chrono' );
+	        	_e( 'Need help with our plugin? Check our our <a href="https://wordpress.org/support/plugin/wp-chrono" target="_blank">support forums.</a>', 'wp-chrono' );
+	        ?></p>
+	        <p><?php 
+	        	_e( 'Show us your love! <a href="https://wordpress.org/plugins/wp-chrono/#reviews" target="_blank">Leave a review.</a>	', 'wp-chrono' );  
+	        ?></p>
+	        <p><a href="?my-plugin-dismissed">Dismiss</a></p>
+	    </div>
+	    <?php
+	}
+
+	function my_plugin_notice_dismissed() {
+	    $user_id = get_current_user_id();
+	    if ( isset( $_GET['my-plugin-dismissed'] ) )
+	        add_user_meta( $user_id, 'my_plugin_notice_dismissed', 'true', true );
+	}
+	
+
 
 	public function currentDateShortcode($atts) {
 
