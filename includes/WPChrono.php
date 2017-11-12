@@ -10,7 +10,7 @@ class WPChrono {
 	public function __construct() {
 
 		$this->plugin_name = 'wp-chrono';
-		$this->version = '1.5';
+		$this->version = '1.5.2';
 
 		$this->current_date = strtotime(current_time('Y-m-d'));
 		$this->current_datetime = strtotime(current_time('Y-m-d G:i:s'));
@@ -21,7 +21,6 @@ class WPChrono {
 
 		$this->registerShortcodes();
 		$this->registerAdminNotices();
-
 
 	}
 
@@ -54,31 +53,28 @@ class WPChrono {
 	}
 
 	public function registerAdminNotices() {
-
-		$user_id = get_current_user_id();
-
 		
-		if( !function_exists( 'the_field' ) && empty( get_option( 'my-acf-notice-dismissed' ) ) ) {
-		  add_action( 'admin_notices', array($this, 'my_acf_admin_notice'));
+		if( !function_exists('the_field') && empty(get_option('wpch-notices-afterinstallmessage-dismissed' ))) {
+		  add_action( 'admin_notices', array($this, 'wpchInstallNotice'));
 		}
 		
-			add_action( 'wp_ajax_my_action', array($this, 'my_action_callback') );
+		add_action( 'wp_ajax_wpch_install_notice_dismiss', array($this, 'wpchInstallNoticeDismissed') );
 
 	}
 
-	public function my_action_callback() {
-		update_option( 'my-acf-notice-dismissed', 'true' );
+	public function wpchInstallNoticeDismissed() {
+		update_option( 'wpch-notices-afterinstallmessage-dismissed', 'true' );
 	}
 	
-	public function my_acf_admin_notice() {
+	public function wpchInstallNotice() {
 	    ?>
-	    <div class="notice notice-success my-acf-notice is-dismissible">
+	    <div class="notice notice-success wpch-install-notice is-dismissible">
 	        <p><?php 
 	        	_e( 'The latest version of WPChrono has been sucessfully installed! ', 'wp-chrono' );
 	        	_e( 'Need help with our plugin? Check our our <a href="https://wordpress.org/support/plugin/wp-chrono" target="_blank">support forums.</a>', 'wp-chrono' );
 	        ?></p>
 	        <p><?php 
-	        	_e( 'Show us your love! <a href="https://wordpress.org/plugins/wp-chrono/#reviews" target="_blank">Leave a review.</a>	', 'wp-chrono' );  
+	        	_e( 'Do you like WPChrono? If so, please leave us a review with your feedback! <a href="https://wordpress.org/plugins/wp-chrono/#reviews" target="_blank">Leave a review.</a>	', 'wp-chrono' );  
 	        ?></p>
 	    </div>
 	    <?php

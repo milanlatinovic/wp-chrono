@@ -1,7 +1,7 @@
-jQuery(document).on( 'click', '.my-acf-notice .notice-dismiss', function() {
+jQuery(document).on( 'click', '.wpch-install-notice .notice-dismiss', function() {
 
   var data = {
-        action: 'my_action',
+        action: 'wpch_install_notice_dismiss',
     };
 
     jQuery.post(ajaxurl, data, function(response) {} );

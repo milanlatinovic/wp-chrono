@@ -2,9 +2,9 @@
 Contributors: ljiljau
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan.softline%40gmail%2ecom&item_name=WP%20Chrono&item_number=Support%20WP%20Chrono%20Open%20Source&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
-Requires at least: 3.0.1
-Tested up to: 4.8
-Stable tag: 1.5.1
+Requires at least: 3.5
+Tested up to: 4.9
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Do you need simple **CTM Content Time Management tool** ?
 Do you need to provide users with content (i.e. Coupon Codes) only on specific time and date ?
 Do you want to create Content Dripping on your web pages using nothing but shortcodes ?
 
-**WP Chrono** provides you with predefines shortcodes for accomplishing various tasks related to controling WordPress content.
+**WP Chrono** provides you with predefined shortcodes for accomplishing various tasks related to controling WordPress content.
 
 
 If you want to accomplish these things easy:
@@ -125,6 +125,10 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.5.2 =
+* Compatibility: Tested for WordPress 4.9
+* Documentation: Support forums and review links within admin panel. Share a love! :)
 
 = 1.5.1 =
 * Compatibility: Tested for WordPress 4.8.3
