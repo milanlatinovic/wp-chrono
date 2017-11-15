@@ -1,4 +1,5 @@
 /* 
+ * ljilja
  * Special thanks to https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
  */
 function getTimeRemaining(endtime) {
