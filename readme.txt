@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
 Requires at least: 3.5
 Tested up to: 4.9
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,9 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.5.3 =
+* Compatibility: Fixed issues when running on PHP 5- environments  (Thanks to S. Djukic)
 
 = 1.5.2 =
 * Compatibility: Tested for WordPress 4.9
