@@ -116,7 +116,7 @@ Use one of predefined templates to quickly create light weight CountDown timer,
 using this shortcode:
 
 <pre>
-[wpch-countdowntimer name="first" date="2016-08-24 11:23 PM" template="darkblue"]
+[wpch-countdowntimer name="first" date="25 Dec 2018 13:30:00 GMT" template="darkblue"]
 This is content that will be previewed after counter finished countdown.
 Note: This content in CSS hidden, so it's visible inside code at client side.
 [/wpch-countdowntimer]
