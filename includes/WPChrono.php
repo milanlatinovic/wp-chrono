@@ -10,7 +10,7 @@ class WPChrono {
 	public function __construct() {
 
 		$this->plugin_name = 'wp-chrono';
-		$this->version = '1.5.2';
+		$this->version = '1.5.3';
 
 		$this->current_date = strtotime(current_time('Y-m-d'));
 		$this->current_datetime = strtotime(current_time('Y-m-d G:i:s'));
@@ -54,7 +54,7 @@ class WPChrono {
 
 	public function registerAdminNotices() {
 		
-		if( !function_exists('the_field') && empty(get_option('wpch-notices-afterinstallmessage-dismissed' ))) {
+		if( !function_exists('the_field') && !get_option('wpch-notices-afterinstallmessage-dismissed' )) {
 		  add_action( 'admin_notices', array($this, 'wpchInstallNotice'));
 		}
 		
@@ -70,11 +70,9 @@ class WPChrono {
 	    ?>
 	    <div class="notice notice-success wpch-install-notice is-dismissible">
 	        <p><?php 
-	        	_e( 'The latest version of WPChrono has been sucessfully installed! ', 'wp-chrono' );
-	        	_e( 'Need help with our plugin? Check our our <a href="https://wordpress.org/support/plugin/wp-chrono" target="_blank">support forums.</a>', 'wp-chrono' );
-	        ?></p>
-	        <p><?php 
-	        	_e( 'Do you like WPChrono? If so, please leave us a review with your feedback! <a href="https://wordpress.org/plugins/wp-chrono/#reviews" target="_blank">Leave a review.</a>	', 'wp-chrono' );  
+	        	_e( '<p>Hey, it\'s great to see that you are using the WPChrono plugin. How is everything going? If you can spare a few moments to rate it on WordPress.org it would help us a lot (and boost our motivation). Cheers! </p>', 'wp-chrono' );
+	        	_e( '<p>- Milan, developer of WP Chrono</p>', 'wp-chrono' );
+	        	_e( '<a target="_blank" href="https://wordpress.org/support/plugin/wp-chrono/reviews/#wporg-footer" class="button button-primary">Sure, take me to the review form</a> &nbsp;', 'wp-chrono' );
 	        ?></p>
 	    </div>
 	    <?php

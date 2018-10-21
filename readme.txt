@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
 Requires at least: 3.5
 Tested up to: 4.9
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -116,7 +116,7 @@ Use one of predefined templates to quickly create light weight CountDown timer,
 using this shortcode:
 
 <pre>
-[wpch-countdowntimer name="first" date="2016-08-24 11:23 PM" template="darkblue"]
+[wpch-countdowntimer name="first" date="25 Dec 2018 13:30:00 GMT" template="darkblue"]
 This is content that will be previewed after counter finished countdown.
 Note: This content in CSS hidden, so it's visible inside code at client side.
 [/wpch-countdowntimer]
@@ -126,8 +126,11 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 
 == Changelog ==
 
-= 1.5.3 =
+= 1.5.4 =
 * Compatibility: Tested for WordPress 4.9.8
+
+= 1.5.3 =
+* Compatibility: Fixed issues when running on PHP 5- environments  (Thanks to S. Djukic)
 
 = 1.5.2 =
 * Compatibility: Tested for WordPress 4.9
