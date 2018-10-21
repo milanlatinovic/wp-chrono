@@ -1,5 +1,5 @@
 === WP Chrono ===
-Contributors: ljiljau
+Contributors: latinovic,ljiljau
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=milan.softline%40gmail%2ecom&item_name=WP%20Chrono&item_number=Support%20WP%20Chrono%20Open%20Source&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: shortcode, post, page, time, date, show time, show date, content, content dripping
 Requires at least: 3.5
@@ -125,6 +125,9 @@ Note: This content in CSS hidden, so it's visible inside code at client side.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.5.3 =
+* Compatibility: Tested for WordPress 4.9.8
 
 = 1.5.2 =
 * Compatibility: Tested for WordPress 4.9
